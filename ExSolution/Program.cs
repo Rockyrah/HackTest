@@ -20,9 +20,12 @@ Console.WriteLine("Hello, World!");
 //var tt = Movies.GetMovieTitles("man");
 
 //CafeRating
+
+//TestEx ep = new TestEx();
+//ep.stackprint();
 var tt = CafeRating.GetFoodOutLetInCity("Seattle");
 
-//var tt = Article.getUserNames(300);
+////var tt = Article.getUserNames(300);
 Console.WriteLine("TotalCount - " + tt.Result.Count);
 foreach (var t in tt.Result)
 {

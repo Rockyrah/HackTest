@@ -143,7 +143,8 @@ namespace ExSolution
                             {
                                 foreach (var t in pp12.data)
                                 {
-                                    ss.Add(t.name);
+                                    ss.Add(t.name+"-"+t.user_rating+"-"+t.estimated_cost);
+
                                 }
                             }
                         }
