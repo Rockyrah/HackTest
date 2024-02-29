@@ -13,7 +13,10 @@ Console.WriteLine("Hello, World!");
 
 //Console.WriteLine("Barcelon in both team1 + team2 = " + tt);
 
-var tt = Article.getUserNames(300);
+var tt = Countries.getCapital("india");
+
+
+//var tt = Article.getUserNames(300);
 
 foreach (var t in tt.Result)
 {
