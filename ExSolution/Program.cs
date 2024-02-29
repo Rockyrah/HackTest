@@ -13,11 +13,17 @@ Console.WriteLine("Hello, World!");
 
 //Console.WriteLine("Barcelon in both team1 + team2 = " + tt);
 
-var tt = Countries.getCapital("india");
+//Countries
+//var tt = Countries.getCapital("india");
 
+//Movies
+//var tt = Movies.GetMovieTitles("man");
+
+//CafeRating
+var tt = CafeRating.GetFoodOutLetInCity("Seattle");
 
 //var tt = Article.getUserNames(300);
-
+Console.WriteLine("TotalCount - " + tt.Result.Count);
 foreach (var t in tt.Result)
 {
     Console.WriteLine(t);
