@@ -9,9 +9,13 @@ Console.WriteLine("Hello, World!");
 
 //Console.WriteLine("Barcelon in both team1 + team2 = " + tt);
 
-//var tt = Football.getNumDraws(2011);
 
-//Console.WriteLine("Barcelon in both team1 + team2 = " + tt);
+/* 
+ * Football - Number of Drawn Matches 
+ */
+var tt = Football.getNumDraws(2014);
+
+Console.WriteLine("Barcelon in both team1 + team2 = " + tt);
 
 //Countries
 //var tt = Countries.getCapital("india");
@@ -23,25 +27,29 @@ Console.WriteLine("Hello, World!");
 
 //TestEx ep = new TestEx();
 //ep.stackprint();
-var tt = CafeRating.GetFoodOutLetInCity("Seattle");
+
+/* 
+ * CAFE RATING
+ */
+//var tt = CafeRating.GetFoodOutLetInCity("Seattle");
 
 ////var tt = Article.getUserNames(300);
-Console.WriteLine("TotalCount - " + tt.Result.Count);
-foreach (var t in tt.Result)
-{
-    Console.WriteLine(t);
-}
+//Console.WriteLine("TotalCount - " + tt.Result.Count);
+//foreach (var t in tt.Result)
+//{
+//    Console.WriteLine(t);
+//}
 
-Console.Write("[");
-for (int i = 0; i < tt.Result.Count; i++)
-{
-    Console.Write("\"" + tt.Result[i] + "\"");
-    if (i < tt.Result.Count - 1)
-    {
-        Console.Write(", ");
-    }
-}
-Console.WriteLine("]");
+//Console.Write("[");
+//for (int i = 0; i < tt.Result.Count; i++)
+//{
+//    Console.Write("\"" + tt.Result[i] + "\"");
+//    if (i < tt.Result.Count - 1)
+//    {
+//        Console.Write(", ");
+//    }
+//}
+//Console.WriteLine("]");
 
 //var tt = Football.getWinnerTotalGoals("UEFA Champions League", 2011);
 

@@ -145,6 +145,11 @@ namespace ExSolution
                                 {
                                     ss.Add(t.name+"-"+t.user_rating+"-"+t.estimated_cost);
 
+                                    if(t.estimated_cost < 120)
+                                    {
+                                        ss.Add(t.name);
+                                    }
+
                                 }
                             }
                         }

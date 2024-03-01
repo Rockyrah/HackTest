@@ -80,7 +80,16 @@ namespace ExSolution
     public class Football
     { 
         public static string baseUrl = "https://jsonmock.hackerrank.com";
-        
+
+        public static string ToQueryString(System.Collections.Specialized.NameValueCollection nvc)
+        {
+            string result = string.Join("&", Array.ConvertAll(nvc.AllKeys, key => string.Format("{0}={1}", System.Net.WebUtility.UrlEncode(key), System.Net.WebUtility.UrlEncode(nvc[key]))));
+
+            Console.WriteLine("QueryParameter - " +result);
+            return result;
+        }
+
+
         public static int GetTeamCount(Page s, NameValueCollection q, string teamName, int y, int pp)
         {
             int c = 0;
@@ -430,6 +439,10 @@ namespace ExSolution
             }
 
         }
+        
+        
+        
+        // Football - Number of DrawnMatches
         public static int getNumDraws(int year)
         {
             int count = 0;
@@ -453,29 +466,36 @@ namespace ExSolution
 
             try
             {
-                for (int i = 1; i <10; i++)
+                for (int i = 1; i<=10; i++)
                 {
 
                     if (queryParams.AllKeys.Contains("page"))
                     {
                         queryParams.Remove("page");
+                        
                     }
-                    
-
 
                     if (queryParams.AllKeys.Contains("team1goals"))
                         {
                            queryParams.Remove("team1goals");
                            queryParams.Add("team1goals", i.ToString());
                         }
-                        else
+                    else
                     {
                         queryParams.Add("team1goals", i.ToString());
                     }
 
-                      
+                    if (queryParams.AllKeys.Contains("team2goals"))
+                    {
+                        queryParams.Remove("team2goals");
+                        queryParams.Add("team2goals", i.ToString());
+                    }
+                    else
+                    {
+                        queryParams.Add("team2goals", i.ToString());
+                    }
 
-                   
+
                     using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
                     {
                         client.BaseAddress = new Uri("https://jsonmock.hackerrank.com/");
@@ -496,45 +516,55 @@ namespace ExSolution
                     }
                 }
 
-                for (int j = 1; j <10; j++)
-                {
-                    if (queryParams1.AllKeys.Contains("page"))
-                    {
-                        queryParams1.Remove("page");
-                    }
+                //for (int j = 1; j <=10; j++)
+                //{
 
+                    
 
-                    if (queryParams1.AllKeys.Contains("team2goals"))
-                    {
-                        queryParams1.Remove("team2goals");
-                        queryParams1.Add("team2goals", j.ToString());
-                    }
-                    else
-                    {
-                        queryParams1.Add("team2goals", j.ToString());
-                    }
+                //    if (queryParams1.AllKeys.Contains("team1goals"))
+                //    {
+                //        queryParams1.Remove("team1goals");
+                //    }
 
+                //    if (queryParams1.AllKeys.Contains("team2goals"))
+                //    {
+                //        queryParams1.Remove("team2goals");
+                //        queryParams1.Add("team2goals", j.ToString());
+                //    }
+                //    else
+                //    {
+                //        queryParams1.Add("team2goals", j.ToString());
+                //    }
+                //    if (queryParams1.AllKeys.Contains("page"))
+                //    {
+                //        queryParams1.Remove("page");
+                //        queryParams1.Add("page", j.ToString());
+                //    }
+                //    else
+                //    {
+                //        queryParams1.Add("page", j.ToString());
+                //    }
 
-                    using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
-                    {
-                        client.BaseAddress = new Uri("https://jsonmock.hackerrank.com/");
-                        HttpResponseMessage response = client.GetAsync("api/football_matches?" + ToQueryString(queryParams1)).Result;
-                        if (response.IsSuccessStatusCode)
-                        {
+                //    using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate }))
+                //    {
+                //        client.BaseAddress = new Uri("https://jsonmock.hackerrank.com/");
+                //        HttpResponseMessage response = client.GetAsync("api/football_matches?" + ToQueryString(queryParams1)).Result;
+                //        if (response.IsSuccessStatusCode)
+                //        {
 
-                            string result = response.Content.ReadAsStringAsync().Result;
+                //            string result = response.Content.ReadAsStringAsync().Result;
 
-                            Page pp = JsonConvert.DeserializeObject<Page>(result);
-                            Console.WriteLine($"Page - {j}");
-                            Console.WriteLine($"Page- {j} - TotalPages" + pp.total_pages);
-                            int pp1 = Football.GetTeamCount1(pp, queryParams1, team, year, 2, j);
-                            //JObject ks = JObject.Parse(result);
-                            count = count + pp1;
-                            Console.WriteLine($"Page- {j} - TotalCount Returned" + count);
-                        }
+                //            Page pp = JsonConvert.DeserializeObject<Page>(result);
+                //            Console.WriteLine($"Page - {j}");
+                //            Console.WriteLine($"Page- {j} - TotalPages" + pp.total_pages);
+                //            int pp1 = Football.GetTeamCount1(pp, queryParams1, team, year, 2, j);
+                //            //JObject ks = JObject.Parse(result);
+                //            count = count + pp1;
+                //            Console.WriteLine($"Page- {j} - TotalCount Returned" + count);
+                //        }
 
-                    }
-                }
+                //    }
+                //}
                 return count;
             }
             catch (Exception ex)
@@ -558,37 +588,28 @@ namespace ExSolution
 
             if (s.total_pages > 0)
             {
-                for (int i = 1; i < s.total_pages; i++)
+                for (int i = 1; i <=s.total_pages; i++)
                 {
-                    
-                    if( pp == 1)
+                    if (q.AllKeys.Contains("team1goals"))
                     {
-                        if (q.AllKeys.Contains("team1goals"))
-                        {
-                            q.Remove("team1goals");
-                            q.Add("team1goals", goalCount.ToString());
-                        }
-                        else
-                        {
-                            q.Add("team1goals", goalCount.ToString());
-                        }
-
-
+                        q.Remove("team1goals");
+                        q.Add("team1goals", goalCount.ToString());
+                    }
+                    else
+                    {
+                        q.Add("team1goals", goalCount.ToString());
                     }
 
-                    if (pp == 2)
+                    if (q.AllKeys.Contains("team2goals"))
                     {
-                        if (q.AllKeys.Contains("team2goals"))
-                        {
-                            q.Remove("team2goals");
-                            q.Add("team2goals", goalCount.ToString());
-                        }
-                        else
-                        {
-                            q.Add("team2goals", goalCount.ToString());
-                        }
-
+                        q.Remove("team2goals");
+                        q.Add("team2goals", goalCount.ToString());
                     }
+                    else
+                    {
+                        q.Add("team2goals", goalCount.ToString());
+                    }
+
 
                     if (q.AllKeys.Contains("page"))
                     {
@@ -612,9 +633,7 @@ namespace ExSolution
 
                         foreach (var t in pp1.data)
                         {
-                            if (pp == 1)
-                            {
-
+                            
                                 if (t.year == y)
                                 {
                                     if (t.team1goals.Equals(t.team2goals, StringComparison.OrdinalIgnoreCase))
@@ -623,16 +642,6 @@ namespace ExSolution
                                     }
 
                                 }
-
-                            }
-
-                            if (pp == 2)
-                            {
-                                if (t.team1goals.Equals(t.team2goals, StringComparison.OrdinalIgnoreCase))
-                                {
-                                    c++;
-                                }
-                            }
 
                         }
 
@@ -645,11 +654,7 @@ namespace ExSolution
             return c;
         }
 
-        public static string ToQueryString(System.Collections.Specialized.NameValueCollection nvc)
-        {
-            string result = string.Join("&", Array.ConvertAll(nvc.AllKeys, key => string.Format("{0}={1}", System.Net.WebUtility.UrlEncode(key), System.Net.WebUtility.UrlEncode(nvc[key]))));
-            return result;
-        }
+        
 
         
     }
