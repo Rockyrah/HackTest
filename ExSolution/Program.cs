@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ExSolution;
+using System.Net.WebSockets;
 
 Console.WriteLine("Hello, World!");
 
@@ -13,10 +14,26 @@ Console.WriteLine("Hello, World!");
 /* 
  * Football - Number of Drawn Matches 
  */
-var tt = Football.getNumDraws(2011);
+//var tt = Football.getNumDraws(2011);
 
-Console.WriteLine("Barcelon in both team1 + team2 = " + tt);
+//Console.WriteLine("Barcelon in both team1 + team2 = " + tt);
 
+
+//var tp = TwoDimensionalArray.DisplayTwoDimensional();
+
+//var tp = TwoDimensionalArray.GetTwoDimensionalMixed(3, 2);
+
+var tp = Transaction.GetTransactions(1, "debit");
+
+for(int i=0; i< tp.Count;i++)
+{
+    for(int j=0; j<tp[i].Count; j++)
+    {
+        Console.Write(tp[i][j] + " ");
+        
+    }
+    Console.WriteLine();
+}
 //Countries
 //var tt = Countries.getCapital("india");
 
