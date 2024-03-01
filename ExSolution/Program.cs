@@ -5,7 +5,7 @@ Console.WriteLine("Hello, World!");
 
 //Example1 ex1 = new Example1();
 //ex1.GetFun();
-//var tt = Football.getTotalGoals("Chelsea", 2014);
+//var tt = Football.getTotalGoals("Barcelona", 2011);
 
 //Console.WriteLine("Barcelon in both team1 + team2 = " + tt);
 
@@ -13,7 +13,7 @@ Console.WriteLine("Hello, World!");
 /* 
  * Football - Number of Drawn Matches 
  */
-var tt = Football.getNumDraws(2014);
+var tt = Football.getNumDraws(2011);
 
 Console.WriteLine("Barcelon in both team1 + team2 = " + tt);
 
