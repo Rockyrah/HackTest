@@ -23,17 +23,22 @@ Console.WriteLine("Hello, World!");
 
 //var tp = TwoDimensionalArray.GetTwoDimensionalMixed(3, 2);
 
-var tp = Transaction.GetTransactions(1, "debit");
 
-for(int i=0; i< tp.Count;i++)
-{
-    for(int j=0; j<tp[i].Count; j++)
-    {
-        Console.Write(tp[i][j] + " ");
+string s = TestHacker.bestRestaurant("Seattle", 120);
+
+Console.WriteLine(s);
+
+//var tp = Transaction.GetTransactions(1, "debit");
+
+//for(int i=0; i< tp.Count;i++)
+//{
+//    for(int j=0; j<tp[i].Count; j++)
+//    {
+//        Console.Write(tp[i][j] + " ");
         
-    }
-    Console.WriteLine();
-}
+//    }
+//    Console.WriteLine();
+//}
 //Countries
 //var tt = Countries.getCapital("india");
 
