@@ -14,7 +14,7 @@ namespace ExSolution
         public string city { get; set; }
         public string name { get; set; }
         public int estimated_cost { get; set; }
-        public UserRating user_rating { get; set; }
+        public UserRating1 user_rating { get; set; }
         public int id { get; set; }
     }
 
@@ -27,7 +27,7 @@ namespace ExSolution
         public List<CafeRatingRecord> data { get; set; }
     }
 
-    public class UserRating
+    public class UserRating1
     {
         public double average_rating { get; set; }
         public int votes { get; set; }
