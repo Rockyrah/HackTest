@@ -23,17 +23,17 @@ Console.WriteLine("Hello, World!");
 
 //var tp = TwoDimensionalArray.GetTwoDimensionalMixed(3, 2);
 
-var tp = Transaction.GetTransactions(1, "debit");
+//var tp = Transaction.GetTransactions(1, "debit");
 
-for(int i=0; i< tp.Count;i++)
-{
-    for(int j=0; j<tp[i].Count; j++)
-    {
-        Console.Write(tp[i][j] + " ");
+//for(int i=0; i< tp.Count;i++)
+//{
+//    for(int j=0; j<tp[i].Count; j++)
+//    {
+//        Console.Write(tp[i][j] + " ");
         
-    }
-    Console.WriteLine();
-}
+//    }
+//    Console.WriteLine();
+//}
 //Countries
 //var tt = Countries.getCapital("india");
 
@@ -42,8 +42,8 @@ for(int i=0; i< tp.Count;i++)
 
 //CafeRating
 
-//TestEx ep = new TestEx();
-//ep.stackprint();
+TestEx ep = new TestEx();
+ep.stackprint();
 
 /* 
  * CAFE RATING
